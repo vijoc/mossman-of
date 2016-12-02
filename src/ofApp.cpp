@@ -1,18 +1,19 @@
 #include "ofApp.h"
-#include "boids.hpp"
+#include "scenes/boids/boidsScene.hpp"
 
 float t;
-Boids* b;
+BoidsScene* b;
 //--------------------------------------------------------------
 void ofApp::setup(){
 	t = 0.0f;
 	ofBackground(255, 255, 255);
-	b = new Boids();
+	b = new BoidsScene();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
 	t += 0.03f;
+	b->update();
 }
 
 //--------------------------------------------------------------
