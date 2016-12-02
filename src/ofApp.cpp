@@ -1,10 +1,13 @@
 #include "ofApp.h"
+#include "boids.hpp"
 
 float t;
+Boids* b;
 //--------------------------------------------------------------
 void ofApp::setup(){
 	t = 0.0f;
 	ofBackground(255, 255, 255);
+	b = new Boids();
 }
 
 //--------------------------------------------------------------
@@ -16,6 +19,7 @@ void ofApp::update(){
 void ofApp::draw(){
 	ofSetColor(0, 0, 0);
 	ofDrawCircle(100, 100, 10.0 + sin(t)*10.0);
+	b->draw();
 }
 
 //--------------------------------------------------------------
