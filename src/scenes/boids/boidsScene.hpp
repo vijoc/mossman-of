@@ -1,4 +1,5 @@
 #include "ofMain.h"
+#include "flock.hpp"
 
 class BoidsScene
 {
@@ -9,4 +10,5 @@ public:
 private:
 	float x;
 	float y;
+	Flock* flock;
 };
