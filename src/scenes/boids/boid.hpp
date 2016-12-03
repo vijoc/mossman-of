@@ -1,14 +1,11 @@
 #include "ofMain.h"
-#include "boid.hpp"
 
-class Flock
-{
+class Boid {
 public:
-	Flock();
+	Boid();
 	void draw();
 	void update();
 private:
 	float x;
 	float y;
-	Boid *boids [32];
 };
