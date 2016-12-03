@@ -18,8 +18,6 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-	ofSetColor(0, 0, 0);
-	ofDrawCircle(100, 100, 10.0 + sin(t)*10.0);
 	b->draw();
 }
 

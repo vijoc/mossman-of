@@ -1,12 +1,12 @@
 #include "boid.hpp"
 
 Boid::Boid() {
-	x = 300.0;
-	y = 300.0;
+	x = ofRandom(0, ofGetWidth());
+	y = ofRandom(0, ofGetHeight());
 }
 
 void Boid::draw() {
-	ofSetColor(255, 0, 0);
+	ofSetColor(0, 0, 0);
 	ofDrawCircle(x, y, 20);
 }
 
