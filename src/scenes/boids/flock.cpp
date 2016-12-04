@@ -14,6 +14,6 @@ void Flock::draw() {
 
 void Flock::update() {
 	for (int i = 0; i < 32; i++) {
-		boids[i]->update();
+		boids[i]->update(*boids);
 	}
 }
