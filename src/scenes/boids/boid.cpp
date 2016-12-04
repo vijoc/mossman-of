@@ -35,7 +35,7 @@ void Boid::separate(Boid boids[]) {
 	ofVec2f c = ofVec2f(0, 0);
 	for(int i = 0; i < 32; i++) {
 		Boid b = boids[i];
-		if(b.location.distance(location) < 100 && b.location.distance(location) > 0) {
+		if(location.distance(b.location) < 100 && location.distance(b.location) > 0) {
 			c += (b.location - location);
 		}
 	}
