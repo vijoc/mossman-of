@@ -29,9 +29,9 @@ void Boid::separate(Boid boids[]) {
 	ofVec2f c = ofVec2f(0, 0);
 	for(int i = 0; i < 32; i++) {
 		Boid b = boids[i];
-		if((location - b.location).length() < 1000) {
-			c -= location - b.location;
+		if((location - b.location).length() < 50 && (location - b.location).length() > 0) {
+			c += b.location - location;
 		}
 	}
-	velocity += c;
+	velocity -= c.normalize();
 }
