@@ -7,4 +7,5 @@ public:
 	void update();
 private:
 	ofVec2f location;
+	float radius;
 };
