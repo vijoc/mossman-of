@@ -2,7 +2,9 @@
 
 Flock::Flock() {
 	for (int i = 0; i < 32; i++) {
-		boids[i] = new Boid();
+		float r = 20.0f;
+		if(i != 0) r = 10.0f;
+		boids[i] = new Boid(r);
 	}
 }
 

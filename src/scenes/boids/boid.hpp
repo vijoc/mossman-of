@@ -3,6 +3,7 @@
 class Boid {
 public:
 	Boid();
+	Boid(float r);
 	void draw();
 	void update(Boid boids[]);
 private:
