@@ -1,7 +1,8 @@
 #include "boid.hpp"
 
 Boid::Boid() {
-	location = ofVec2f(ofRandom(0, ofGetWidth()), ofRandom(0, ofGetHeight()));
+	location = ofVec2f(ofRandomWidth(), ofRandomHeight());
+	velocity = ofVec2f(ofRandomf(), ofRandomf());
 	radius = 20;
 }
 
@@ -11,6 +12,6 @@ void Boid::draw() {
 }
 
 void Boid::update() {
-	location.x += 1;
+	location += velocity;
 	if(location.x > ofGetWidth() + radius) location.x = -radius;
 }
