@@ -14,4 +14,7 @@ void Boid::draw() {
 void Boid::update() {
 	location += velocity;
 	if(location.x > ofGetWidth() + radius) location.x = -radius;
+	if(location.x < -radius) location.x = ofGetWidth() + radius;
+	if(location.y > ofGetHeight() + radius) location.y = -radius;
+	if(location.y < -radius) location.y = ofGetHeight() + radius;
 }
