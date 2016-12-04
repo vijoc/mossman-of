@@ -10,5 +10,6 @@ void Boid::draw() {
 }
 
 void Boid::update() {
-
+	location.x += 1;
+	if(location.x > ofGetWidth()) location.x = 0;
 }
