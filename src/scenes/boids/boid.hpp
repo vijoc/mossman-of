@@ -6,6 +6,5 @@ public:
 	void draw();
 	void update();
 private:
-	float x;
-	float y;
+	ofVec2f location;
 };

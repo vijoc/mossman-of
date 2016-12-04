@@ -1,13 +1,12 @@
 #include "boid.hpp"
 
 Boid::Boid() {
-	x = ofRandom(0, ofGetWidth());
-	y = ofRandom(0, ofGetHeight());
+	location = ofVec2f(ofRandom(0, ofGetWidth()), ofRandom(0, ofGetHeight()));
 }
 
 void Boid::draw() {
 	ofSetColor(0, 0, 0);
-	ofDrawCircle(x, y, 20);
+	ofDrawCircle(location, 20);
 }
 
 void Boid::update() {
