@@ -6,9 +6,9 @@ public:
 	Boid(float r);
 	void draw();
 	void update(Boid boids[]);
-private:
 	ofVec2f location;
 	ofVec2f velocity;
+private:
 	float radius;
 	void checkBounds();
 	void separate(Boid boids[]);
