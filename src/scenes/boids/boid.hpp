@@ -4,7 +4,6 @@ class Boid {
 public:
 	Boid();
 	Boid(float r);
-	void draw();
 	void update(std::vector<Boid> boids);
 	ofVec2f getLocation() { return location; }
 	ofVec2f getVelocity() { return velocity; }

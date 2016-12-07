@@ -8,8 +8,9 @@ class Flock
 {
 public:
 	Flock();
-	void draw();
 	void update();
+	int getSize() { return boids.size(); }
+	Boid getBoid(int i) { return boids[i]; }
 private:
 	std::vector<Boid> boids;
 };

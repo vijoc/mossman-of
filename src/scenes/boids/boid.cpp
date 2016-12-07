@@ -16,11 +16,6 @@ Boid::Boid(float r) {
 	radius = r;
 }
 
-void Boid::draw() {
-	ofSetColor(0, 0, 0);
-	ofDrawCircle(location, radius);
-}
-
 void Boid::update(std::vector<Boid> boids) {
 	if(velocity.length() > 2) velocity.scale(2);
 	location += velocity;

@@ -9,12 +9,6 @@ Flock::Flock() {
 	}
 }
 
-void Flock::draw() {
-	for (int i = 0; i < boids.size(); i++) {
-		boids[i].draw();
-	}
-}
-
 void Flock::update() {
 	for (int i = 0; i < boids.size(); i++) {
 		boids[i].update(boids);
