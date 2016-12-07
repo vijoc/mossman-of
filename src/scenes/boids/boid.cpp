@@ -47,9 +47,9 @@ void Boid::separate(std::vector<Boid> boids) {
 	ofVec2f c = ofVec2f(0, 0);
 	for(int i = 0; i < boids.size(); i++) {
 		Boid b = boids[i];
-		float distance = location.distance(b.location);
+		float distance = location.distance(b.getLocation());
 		if(distance < 50 && distance > 0) {
-			ofVec2f d = b.location - location;
+			ofVec2f d = b.getLocation() - location;
 			d.normalize();
 			c += d;
 		}
