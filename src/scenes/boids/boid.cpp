@@ -17,7 +17,7 @@ void Boid::draw() {
 	ofDrawCircle(location, radius);
 }
 
-void Boid::update(Boid boids[]) {
+void Boid::update(std::vector<Boid> boids) {
 	if(velocity.length() > 2) velocity.scale(2);
 	location += velocity;
 	separate(boids);
@@ -31,20 +31,11 @@ void Boid::checkBounds() {
 	if(location.y < -radius) location.y = ofGetHeight() + radius;
 }
 
-void Boid::separate(Boid boids[]) {
+void Boid::separate(std::vector<Boid> boids) {
 	ofVec2f c = ofVec2f(0, 0);
 	for(int i = 0; i < 32; i++) {
 		Boid b = boids[i];
 		float distance = location.distance(b.location);
-		std::cout << "i: ";
-		std::cout << i;
-		std::cout << "\n";
-		std::cout << "  location: ";
-		std::cout << b.location;
-		std::cout << "\n";
-		std::cout << "  distance: ";
-		std::cout << distance;
-		std::cout << "\n";
 		if(distance < 50 && distance > 0) {
 			ofVec2f d = b.location - location;
 			d.normalize();

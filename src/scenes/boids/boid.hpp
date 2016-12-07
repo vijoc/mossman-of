@@ -5,11 +5,11 @@ public:
 	Boid();
 	Boid(float r);
 	void draw();
-	void update(Boid boids[]);
+	void update(std::vector<Boid> boids);
 	ofVec2f location;
 	ofVec2f velocity;
-private:
 	float radius;
+private:
 	void checkBounds();
-	void separate(Boid boids[]);
+	void separate(std::vector<Boid> boids);
 };

@@ -8,5 +8,5 @@ public:
 	void draw();
 	void update();
 private:
-	Boid *boids [32];
+	std::vector<Boid> boids;
 };
