@@ -1,3 +1,6 @@
+#ifndef FLOCK_H
+#define FLOCK_H
+
 #include "ofMain.h"
 #include "boid.hpp"
 
@@ -10,3 +13,5 @@ public:
 private:
 	std::vector<Boid> boids;
 };
+
+#endif /* FLOCK_H */
