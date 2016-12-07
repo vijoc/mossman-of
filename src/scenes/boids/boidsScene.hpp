@@ -1,5 +1,6 @@
 #include "ofMain.h"
 #include "flock.hpp"
+#include "boidsRenderer.hpp"
 
 class BoidsScene
 {
@@ -9,4 +10,5 @@ public:
 	void update();
 private:
 	Flock* flock;
+	BoidsRenderer* boidsRenderer;
 };

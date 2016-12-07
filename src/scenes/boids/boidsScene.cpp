@@ -2,10 +2,11 @@
 
 BoidsScene::BoidsScene() {
 	flock = new Flock();
+	boidsRenderer = new BoidsRenderer(*flock);
 }
 
 void BoidsScene::draw() {
-	flock->draw();
+	boidsRenderer->draw();
 }
 
 void BoidsScene::update() {
