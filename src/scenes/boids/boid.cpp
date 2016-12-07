@@ -7,13 +7,8 @@ static Boundaries bounds = Boundaries::Bounce;
 Boid::Boid() {
 	location = ofVec2f(ofRandomWidth(), ofRandomHeight());
 	velocity = ofVec2f(ofRandomf(), ofRandomf());
-	radius = 20;
-}
-
-Boid::Boid(float r) {
-	location = ofVec2f(ofRandomWidth(), ofRandomHeight());
-	velocity = ofVec2f(ofRandomf(), ofRandomf());
-	radius = r;
+	radius = 10;
+	weight = 1.0;
 }
 
 void Boid::update(std::vector<Boid> boids) {
