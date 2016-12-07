@@ -9,9 +9,13 @@ public:
 	float getRadius() { return radius; }
 private:
 	void checkBounds();
-	void separate(std::vector<Boid> boids);
+	void applyForce(ofVec2f force);
+	void flock(std::vector<Boid> boids);
+	ofVec2f separate(std::vector<Boid> boids);
 	ofVec2f location;
 	ofVec2f velocity;
+	ofVec2f acceleration;
 	float radius;
 	float weight;
+	float deceleration;
 };

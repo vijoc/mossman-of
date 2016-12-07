@@ -2,19 +2,23 @@
 
 enum Boundaries { Wrap, Bounce };
 
-static Boundaries bounds = Boundaries::Bounce;
+static Boundaries bounds = Boundaries::Wrap;
 
 Boid::Boid() {
 	location = ofVec2f(ofRandomWidth(), ofRandomHeight());
 	velocity = ofVec2f(ofRandomf(), ofRandomf());
+	acceleration = ofVec2f(0, 0);
 	radius = 10;
-	weight = 1.0;
+	weight = 10.0;
+	deceleration = 0.3;
 }
 
 void Boid::update(std::vector<Boid> boids) {
+	velocity += acceleration;
 	if(velocity.length() > 2) velocity.scale(2);
 	location += velocity;
-	separate(boids);
+	acceleration *= deceleration;
+	flock(boids);
 	checkBounds();
 }
 
@@ -33,7 +37,16 @@ void Boid::checkBounds() {
 	}
 }
 
-void Boid::separate(std::vector<Boid> boids) {
+void Boid::flock(std::vector<Boid> boids) {
+	ofVec2f separation = separate(boids);
+	applyForce(separation);
+}
+
+void Boid::applyForce(ofVec2f force) {
+	acceleration = acceleration + (force / weight);
+}
+
+ofVec2f Boid::separate(std::vector<Boid> boids) {
 	ofVec2f c = ofVec2f(0, 0);
 	for(int i = 0; i < boids.size(); i++) {
 		Boid b = boids[i];
@@ -44,5 +57,5 @@ void Boid::separate(std::vector<Boid> boids) {
 			c += d;
 		}
 	}
-	velocity -= c;
+	return -c;
 }
