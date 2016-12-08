@@ -1,24 +1,29 @@
 #include "ofApp.h"
 #include "scenes/boids/boidsScene.hpp"
+#include "scenes/gol/golScene.hpp"
 
 float t;
-Scene* s;
+Scene* s1;
+Scene* s2;
 //--------------------------------------------------------------
 void ofApp::setup(){
 	t = 0.0f;
 	ofBackground(255, 255, 255);
-	s = new BoidsScene();
+	s1 = new BoidsScene();
+	s2 = new GolScene();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
 	t += 0.03f;
-	s->update();
+	s1->update();
+	s2->update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-	s->draw();
+	s1->draw();
+	s2->draw();
 }
 
 //--------------------------------------------------------------
