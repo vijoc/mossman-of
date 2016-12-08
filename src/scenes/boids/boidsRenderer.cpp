@@ -67,14 +67,14 @@ void BoidsRenderer::renderClosestTriangles() {
 
 std::vector<Boid> BoidsRenderer::findClosestNeighbours(Boid b) {
 	std::vector<Boid> out;
-	std::vector<std::pair<Boid&, float>> distances;
+	std::vector<std::pair<float, Boid>> distances;
 	for(int i = 0; i < flock.getSize(); i++) {
 		Boid c = flock.getBoid(i);
 		float d = b.getLocation().distance(c.getLocation());
-		distances.emplace_back(c, d);
+		distances.emplace_back(d, c);
 	}
 	for(int i = 0; i < 3; i++) {
-		out.push_back(distances[i].first);
+		out.push_back(distances[i].second);
 	}
 	return out;
 }
