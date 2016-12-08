@@ -17,6 +17,16 @@ void BoidsRenderer::draw() {
 			}
 			break;
 		case RenderingModes::Triangle:
+			for(int i = 0; i < flock.getSize(); i++) {
+				Boid b = flock.getBoid(i);
+				ofVec2f bLoc = b.getLocation();
+
+				for(int j = 0; j < flock.getSize(); j++) {
+					Boid c = flock.getBoid(j);
+					ofVec2f cLoc = c.getLocation();
+					ofDrawLine(bLoc, cLoc);
+				}
+			}
 			break;
 	}
 }
