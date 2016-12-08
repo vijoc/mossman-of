@@ -1,8 +1,9 @@
 #include "ofMain.h"
 #include "flock.hpp"
 #include "boidsRenderer.hpp"
+#include "scene.hpp"
 
-class BoidsScene
+class BoidsScene : public Scene
 {
 public:
 	BoidsScene();
