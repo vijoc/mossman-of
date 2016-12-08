@@ -12,3 +12,11 @@ void GolScene::draw() {
 void GolScene::update() {
 
 }
+
+void GolScene::activate() {
+
+}
+
+void GolScene::deactivate() {
+
+}

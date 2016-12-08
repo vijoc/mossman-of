@@ -5,30 +5,35 @@
 float t;
 Scene* s1;
 Scene* s2;
+Scene* activeScene;
 //--------------------------------------------------------------
 void ofApp::setup(){
 	t = 0.0f;
 	ofBackground(255, 255, 255);
 	s1 = new BoidsScene();
 	s2 = new GolScene();
+	activeScene = s1;
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
 	t += 0.03f;
-	s1->update();
-	s2->update();
+	activeScene->update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-	s1->draw();
-	s2->draw();
+	activeScene->draw();
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-
+	if (key == 's') {
+		activeScene = s1;
+	}
+	if (key == 't') {
+		activeScene = s2;
+	}
 }
 
 //--------------------------------------------------------------

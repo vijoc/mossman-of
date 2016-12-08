@@ -13,3 +13,11 @@ void BoidsScene::update() {
 	flock->update();
 	return;
 }
+
+void BoidsScene::activate() {
+	return;
+}
+
+void BoidsScene::deactivate() {
+	return;
+}

@@ -9,6 +9,8 @@ public:
 	BoidsScene();
 	void draw();
 	void update();
+	void activate();
+	void deactivate();
 private:
 	Flock* flock;
 	BoidsRenderer* boidsRenderer;

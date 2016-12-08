@@ -6,4 +6,6 @@ public:
 	GolScene();
 	void draw();
 	void update();
+	void activate();
+	void deactivate();
 };
