@@ -1,4 +1,5 @@
 #include "boid.hpp"
+#include "rules.hpp"
 
 enum Boundaries { Wrap, Bounce };
 
@@ -7,7 +8,7 @@ static Boundaries bounds = Boundaries::Bounce;
 Boid::Boid() {
 	acceleration = ofVec2f(0, 0);
 	radius = 10;
-	weight = 10.0;
+	weight = Rules::weight;
 	deceleration = 0.3;
 	float x = ofRandom(radius, ofGetWidth() - radius);
 	float y = ofRandom(radius, ofGetHeight() - radius);
