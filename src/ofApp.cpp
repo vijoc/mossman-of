@@ -2,23 +2,23 @@
 #include "scenes/boids/boidsScene.hpp"
 
 float t;
-BoidsScene* b;
+Scene* s;
 //--------------------------------------------------------------
 void ofApp::setup(){
 	t = 0.0f;
 	ofBackground(255, 255, 255);
-	b = new BoidsScene();
+	s = new BoidsScene();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
 	t += 0.03f;
-	b->update();
+	s->update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-	b->draw();
+	s->draw();
 }
 
 //--------------------------------------------------------------
