@@ -9,4 +9,6 @@ public:
 private:
 	Flock& flock;
 	void renderTriangles();
+	void renderClosestTriangles();
+	std::vector<Boid> findClosestNeighbours(Boid b);
 };

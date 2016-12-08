@@ -29,5 +29,8 @@ void BoidsScene::keyPress(int key) {
 	if(key == 'w') {
 		boidsRenderer->setRenderingMode(1);
 	}
+	if(key == 'e') {
+		boidsRenderer->setRenderingMode(2);
+	}
 	return;
 }
