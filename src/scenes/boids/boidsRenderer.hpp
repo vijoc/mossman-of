@@ -8,4 +8,5 @@ public:
 	void setRenderingMode(int index);
 private:
 	Flock& flock;
+	void renderTriangles();
 };
