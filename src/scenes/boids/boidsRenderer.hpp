@@ -11,4 +11,5 @@ private:
 	void renderTriangles();
 	void renderClosestTriangles();
 	std::vector<Boid> findClosestNeighbours(Boid b);
+	static bool pairCompare(const pair<float, Boid>&i, const pair<float, Boid>&j) { return i.first < j.first; };
 };

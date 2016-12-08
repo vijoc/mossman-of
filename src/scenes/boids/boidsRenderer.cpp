@@ -73,6 +73,7 @@ std::vector<Boid> BoidsRenderer::findClosestNeighbours(Boid b) {
 		float d = b.getLocation().distance(c.getLocation());
 		distances.emplace_back(d, c);
 	}
+	std::sort(distances.begin(), distances.end(), pairCompare);
 	for(int i = 0; i < 3; i++) {
 		out.push_back(distances[i].second);
 	}
