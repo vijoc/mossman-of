@@ -7,9 +7,9 @@ static Boundaries bounds = Boundaries::Bounce;
 
 Boid::Boid() {
 	acceleration = ofVec2f(0, 0);
-	radius = 10;
+	radius = Rules::radius;
 	weight = Rules::weight;
-	deceleration = 0.3;
+	deceleration = Rules::deceleration;
 	float x = ofRandom(radius, ofGetWidth() - radius);
 	float y = ofRandom(radius, ofGetHeight() - radius);
 	location = ofVec2f(x, y);
@@ -18,7 +18,7 @@ Boid::Boid() {
 
 void Boid::update(std::vector<Boid> boids) {
 	velocity += acceleration;
-	if(velocity.length() > 2) velocity.scale(2);
+	if(velocity.length() > Rules::maxSpeed) velocity.scale(Rules::maxSpeed);
 	location += velocity;
 	acceleration *= deceleration;
 	flock(boids);
@@ -55,12 +55,9 @@ void Boid::checkBounds() {
 }
 
 void Boid::flock(std::vector<Boid> boids) {
-	ofVec2f separation = separate(boids);
-	separation *= 2;
-	ofVec2f cohesion = cohere(boids);
-	cohesion /= 8;
-	ofVec2f alignment = align(boids);
-	alignment /= 16;
+	ofVec2f separation = separate(boids) * Rules::separationWeight;
+	ofVec2f cohesion   = cohere(boids)   * Rules::cohesionWeight;
+	ofVec2f alignment  = align(boids)    * Rules::alignmentWeight;
 
 	applyForce(separation);
 	applyForce(cohesion);
@@ -76,7 +73,7 @@ ofVec2f Boid::separate(std::vector<Boid> boids) {
 	for(int i = 0; i < boids.size(); i++) {
 		Boid b = boids[i];
 		float distance = location.distance(b.getLocation());
-		if(distance < 50 && distance > 0) {
+		if(distance < Rules::desiredSeparation && distance > 0) {
 			ofVec2f d = b.getLocation() - location;
 			d.normalize();
 			c += d;
@@ -90,7 +87,7 @@ ofVec2f Boid::cohere(std::vector<Boid> boids) {
 	for(int i = 0; i < boids.size(); i++) {
 		Boid b = boids[i];
 		float distance = location.distance(b.getLocation());
-		if(distance < 150 && distance > 0) {
+		if(distance < Rules::cohesionDist && distance > 0) {
 			ofVec2f d = b.getLocation() - location;
 			d.normalize();
 			c += d;
@@ -104,7 +101,7 @@ ofVec2f Boid::align(std::vector<Boid> boids) {
 	for(int i = 0; i < boids.size(); i++) {
 		Boid b = boids[i];
 		float distance = location.distance(b.getLocation());
-		if(distance < 150 && distance > 0) {
+		if(distance < Rules::alignmentDist && distance > 0) {
 			ofVec2f d = b.getVelocity();
 			d.normalize();
 			c += d;
