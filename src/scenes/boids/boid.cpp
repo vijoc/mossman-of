@@ -9,7 +9,9 @@ Boid::Boid() {
 	radius = 10;
 	weight = 10.0;
 	deceleration = 0.3;
-	location = ofVec2f(ofRandomWidth(), ofRandomHeight());
+	float x = ofRandom(radius, ofGetWidth() - radius);
+	float y = ofRandom(radius, ofGetHeight() - radius);
+	location = ofVec2f(x, y);
 	velocity = ofVec2f(ofRandomf(), ofRandomf());
 }
 
@@ -31,8 +33,22 @@ void Boid::checkBounds() {
 			if(location.y < -radius) location.y = ofGetHeight() + radius;
 			break;
 		case Boundaries::Bounce :
-			if(location.x > ofGetWidth() - radius || location.x < radius) velocity.x = -velocity.x;
-			if(location.y > ofGetHeight() - radius || location.y < radius) velocity.y = -velocity.y;
+			if(location.x > ofGetWidth() - radius) {
+				velocity.x = -velocity.x;
+				location.x -= 2 * (location.x - (ofGetWidth() - radius)); // bounce back
+			}
+			if(location.x < radius) {
+				velocity.x = -velocity.x;
+				location.x -= 2 * (location.x - radius); // bounce back
+			}
+			if(location.y > ofGetHeight() - radius) {
+				velocity.y = -velocity.y;
+				location.y -= 2 * (location.y - (ofGetHeight() - radius)); // bounce back
+			}
+			if(location.y < radius) {
+				velocity.y = -velocity.y;
+				location.y -= 2 * (location.y - radius); // bounce back
+			}
 			break;
 	}
 }
