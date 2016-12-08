@@ -5,6 +5,7 @@ class BoidsRenderer {
 public:
 	BoidsRenderer(Flock& flock): flock(flock) {;}
 	void draw();
+	void setRenderingMode(int index);
 private:
 	Flock& flock;
 };

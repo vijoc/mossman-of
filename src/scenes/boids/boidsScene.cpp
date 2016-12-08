@@ -23,5 +23,11 @@ void BoidsScene::deactivate() {
 }
 
 void BoidsScene::keyPress(int key) {
+	if(key == 'q') {
+		boidsRenderer->setRenderingMode(0);
+	}
+	if(key == 'w') {
+		boidsRenderer->setRenderingMode(1);
+	}
 	return;
 }

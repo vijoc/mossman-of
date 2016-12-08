@@ -34,6 +34,9 @@ void ofApp::keyPressed(int key){
 	if (key == 't') {
 		activeScene = s2;
 	}
+	else {
+		activeScene->keyPress(key);
+	}
 }
 
 //--------------------------------------------------------------
