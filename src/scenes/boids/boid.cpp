@@ -55,11 +55,15 @@ void Boid::checkBounds() {
 
 void Boid::flock(std::vector<Boid> boids) {
 	ofVec2f separation = separate(boids);
+	separation *= 2;
 	ofVec2f cohesion = cohere(boids);
-	cohesion /= 5;
+	cohesion /= 8;
+	ofVec2f alignment = align(boids);
+	alignment /= 16;
 
 	applyForce(separation);
 	applyForce(cohesion);
+	applyForce(alignment);
 }
 
 void Boid::applyForce(ofVec2f force) {
@@ -87,6 +91,20 @@ ofVec2f Boid::cohere(std::vector<Boid> boids) {
 		float distance = location.distance(b.getLocation());
 		if(distance < 150 && distance > 0) {
 			ofVec2f d = b.getLocation() - location;
+			d.normalize();
+			c += d;
+		}
+	}
+	return c;
+}
+
+ofVec2f Boid::align(std::vector<Boid> boids) {
+	ofVec2f c = ofVec2f(0, 0);
+	for(int i = 0; i < boids.size(); i++) {
+		Boid b = boids[i];
+		float distance = location.distance(b.getLocation());
+		if(distance < 150 && distance > 0) {
+			ofVec2f d = b.getVelocity();
 			d.normalize();
 			c += d;
 		}
