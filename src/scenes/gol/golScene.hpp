@@ -8,4 +8,5 @@ public:
 	void update();
 	void activate();
 	void deactivate();
+	void keyPress(int key);
 };

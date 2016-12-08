@@ -20,3 +20,7 @@ void GolScene::activate() {
 void GolScene::deactivate() {
 
 }
+
+void GolScene::keyPress(int key) {
+
+}

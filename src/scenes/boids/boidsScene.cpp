@@ -21,3 +21,7 @@ void BoidsScene::activate() {
 void BoidsScene::deactivate() {
 	return;
 }
+
+void BoidsScene::keyPress(int key) {
+	return;
+}

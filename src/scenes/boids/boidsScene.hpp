@@ -11,6 +11,7 @@ public:
 	void update();
 	void activate();
 	void deactivate();
+	void keyPress(int key);
 private:
 	Flock* flock;
 	BoidsRenderer* boidsRenderer;

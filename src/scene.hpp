@@ -7,5 +7,6 @@ public:
 	virtual void draw() = 0;
 	virtual void activate() = 0;
 	virtual void deactivate() = 0;
+	virtual void keyPress(int key) = 0;
 };
 #endif /* SCENE_H */
