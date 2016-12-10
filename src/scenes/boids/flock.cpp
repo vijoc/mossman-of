@@ -1,6 +1,6 @@
 #include "flock.hpp"
 
-static int numberOfBoids = 32;
+static int numberOfBoids = 256;
 
 Flock::Flock() {
 	for (int i = 0; i < numberOfBoids; i++) {

@@ -1,9 +1,7 @@
 #include "boid.hpp"
 #include "rules.hpp"
 
-enum Boundaries { Wrap, Bounce };
-
-static Boundaries bounds = Boundaries::Bounce;
+static Rules::Boundaries bounds = Rules::Boundaries::Wrap;
 
 Boid::Boid() {
 	acceleration = ofVec2f(0, 0);
@@ -27,13 +25,13 @@ void Boid::update(std::vector<Boid> boids) {
 
 void Boid::checkBounds() {
 	switch(bounds) {
-		case Boundaries::Wrap :
+		case Rules::Boundaries::Wrap :
 			if(location.x > ofGetWidth() + radius) location.x = -radius;
 			if(location.x < -radius) location.x = ofGetWidth() + radius;
 			if(location.y > ofGetHeight() + radius) location.y = -radius;
 			if(location.y < -radius) location.y = ofGetHeight() + radius;
 			break;
-		case Boundaries::Bounce :
+		case Rules::Boundaries::Bounce :
 			if(location.x > ofGetWidth() - radius) {
 				velocity.x = -velocity.x;
 				location.x -= 2 * (location.x - (ofGetWidth() - radius)); // bounce back

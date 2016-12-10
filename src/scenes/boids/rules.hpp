@@ -14,4 +14,5 @@ public:
 	static float desiredSeparation;
 	static float cohesionDist;
 	static float alignmentDist;
+	enum Boundaries { Wrap, Bounce };
 };
