@@ -14,7 +14,7 @@ Boid::Boid() {
 	velocity = ofVec2f(ofRandomf(), ofRandomf());
 }
 
-void Boid::update(std::vector<Boid> boids) {
+void Boid::update(std::vector<std::shared_ptr<Boid>> boids) {
 	velocity += acceleration;
 	if(velocity.length() > Rules::maxSpeed) velocity.scale(Rules::maxSpeed);
 	location += velocity;
@@ -52,7 +52,7 @@ void Boid::checkBounds() {
 	}
 }
 
-void Boid::flock(std::vector<Boid> boids) {
+void Boid::flock(std::vector<std::shared_ptr<Boid>> boids) {
 	ofVec2f separation = separate(boids) * Rules::separationWeight;
 	ofVec2f cohesion   = cohere(boids)   * Rules::cohesionWeight;
 	ofVec2f alignment  = align(boids)    * Rules::alignmentWeight;
@@ -66,13 +66,13 @@ void Boid::applyForce(ofVec2f force) {
 	acceleration = acceleration + (force / weight);
 }
 
-ofVec2f Boid::separate(std::vector<Boid> boids) {
+ofVec2f Boid::separate(std::vector<std::shared_ptr<Boid>> boids) {
 	ofVec2f c = ofVec2f(0, 0);
 	for(int i = 0; i < boids.size(); i++) {
-		Boid b = boids[i];
-		float distance = location.distance(b.getLocation());
+		std::shared_ptr<Boid> b = boids[i];
+		float distance = location.distance(b->getLocation());
 		if(distance < Rules::desiredSeparation && distance > 0) {
-			ofVec2f d = b.getLocation() - location;
+			ofVec2f d = b->getLocation() - location;
 			d.normalize();
 			c += d;
 		}
@@ -80,13 +80,13 @@ ofVec2f Boid::separate(std::vector<Boid> boids) {
 	return -c;
 }
 
-ofVec2f Boid::cohere(std::vector<Boid> boids) {
+ofVec2f Boid::cohere(std::vector<std::shared_ptr<Boid>> boids) {
 	ofVec2f c = ofVec2f(0, 0);
 	for(int i = 0; i < boids.size(); i++) {
-		Boid b = boids[i];
-		float distance = location.distance(b.getLocation());
+		std::shared_ptr<Boid> b = boids[i];
+		float distance = location.distance(b->getLocation());
 		if(distance < Rules::cohesionDist && distance > 0) {
-			ofVec2f d = b.getLocation() - location;
+			ofVec2f d = b->getLocation() - location;
 			d.normalize();
 			c += d;
 		}
@@ -94,13 +94,13 @@ ofVec2f Boid::cohere(std::vector<Boid> boids) {
 	return c;
 }
 
-ofVec2f Boid::align(std::vector<Boid> boids) {
+ofVec2f Boid::align(std::vector<std::shared_ptr<Boid>> boids) {
 	ofVec2f c = ofVec2f(0, 0);
 	for(int i = 0; i < boids.size(); i++) {
-		Boid b = boids[i];
-		float distance = location.distance(b.getLocation());
+		std::shared_ptr<Boid> b = boids[i];
+		float distance = location.distance(b->getLocation());
 		if(distance < Rules::alignmentDist && distance > 0) {
-			ofVec2f d = b.getVelocity();
+			ofVec2f d = b->getVelocity();
 			d.normalize();
 			c += d;
 		}

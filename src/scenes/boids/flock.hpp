@@ -10,9 +10,9 @@ public:
 	Flock();
 	void update();
 	int getSize() { return boids.size(); }
-	Boid getBoid(int i) { return boids[i]; }
+	std::shared_ptr<Boid> getBoid(int i) { return boids[i]; }
 private:
-	std::vector<Boid> boids;
+	std::vector<std::shared_ptr<Boid>> boids;
 };
 
 #endif /* FLOCK_H */

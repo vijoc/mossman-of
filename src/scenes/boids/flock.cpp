@@ -4,12 +4,12 @@ static int numberOfBoids = 256;
 
 Flock::Flock() {
 	for (int i = 0; i < numberOfBoids; i++) {
-		boids.push_back(Boid());
+		boids.push_back(std::shared_ptr<Boid>(new Boid()));
 	}
 }
 
 void Flock::update() {
 	for (int i = 0; i < boids.size(); i++) {
-		boids[i].update(boids);
+		boids[i]->update(boids);
 	}
 }

@@ -10,6 +10,6 @@ private:
 	Flock& flock;
 	void renderTriangles();
 	void renderClosestTriangles();
-	std::vector<Boid> findClosestNeighbours(Boid b);
-	static bool pairCompare(const pair<float, Boid>&i, const pair<float, Boid>&j) { return i.first < j.first; };
+	std::vector<std::shared_ptr<Boid>> findClosestNeighbours(std::shared_ptr<Boid> b);
+	static bool pairCompare(const pair<float, std::shared_ptr<Boid>>&i, const pair<float, std::shared_ptr<Boid>>&j) { return i.first < j.first; };
 };
