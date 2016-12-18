@@ -15,7 +15,7 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-	activeScene->update(.0f);
+	activeScene->update(ofGetLastFrameTime());
 }
 
 //--------------------------------------------------------------
