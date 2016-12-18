@@ -1,11 +1,12 @@
 #include "ofMain.h"
 #include "flock.hpp"
+#include "renderingModes.hpp"
 
 class BoidsRenderer {
 public:
 	BoidsRenderer(Flock& flock): flock(flock) {;}
 	void draw();
-	void setRenderingMode(int index);
+	void setRenderingMode(RenderingModes rMode);
 private:
 	Flock& flock;
 	void renderTriangles();

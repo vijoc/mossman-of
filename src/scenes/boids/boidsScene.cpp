@@ -24,13 +24,13 @@ void BoidsScene::deactivate() {
 
 void BoidsScene::keyPress(int key) {
 	if(key == 'q') {
-		boidsRenderer->setRenderingMode(0);
+		boidsRenderer->setRenderingMode(RenderingModes::Circle);
 	}
 	if(key == 'w') {
-		boidsRenderer->setRenderingMode(1);
+		boidsRenderer->setRenderingMode(RenderingModes::Triangle);
 	}
 	if(key == 'e') {
-		boidsRenderer->setRenderingMode(2);
+		boidsRenderer->setRenderingMode(RenderingModes::Closest);
 	}
 	return;
 }

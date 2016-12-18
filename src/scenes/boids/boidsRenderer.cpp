@@ -1,7 +1,5 @@
 #include "boidsRenderer.hpp"
 
-enum RenderingModes { Circle, Triangle, Closest };
-
 RenderingModes mode = RenderingModes::Triangle;
 
 int trianglesLimit = 32; // bad magic number, but try changing this to 3 or whatever
@@ -27,16 +25,8 @@ void BoidsRenderer::draw() {
 	}
 }
 
-void BoidsRenderer::setRenderingMode(int index) {
-	if(index == 0) {
-		mode = RenderingModes::Circle;	
-	}
-	if(index == 1) {
-		mode = RenderingModes::Triangle;
-	}
-	if(index == 2) {
-		mode = RenderingModes::Closest;
-	}
+void BoidsRenderer::setRenderingMode(RenderingModes rMode) {
+	mode = rMode;
 }
 
 void BoidsRenderer::renderTriangles() {
