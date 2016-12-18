@@ -1,1 +1,1 @@
-enum class RenderingModes { Circle, Triangle, Closest };
+enum class RenderingModes { Circle, Glitchy, Closest };

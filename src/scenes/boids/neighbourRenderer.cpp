@@ -1,6 +1,6 @@
 #include "neighbourRenderer.hpp"
 
-void NeighbourRenderer::renderClosestTriangles() {
+void NeighbourRenderer::draw() {
 	for(int i = 0; i < flock.getSize(); i++) {
 		std::shared_ptr<Boid> b = flock.getBoid(i);
 		ofVec2f bLoc = b->getLocation();

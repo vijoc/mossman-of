@@ -27,7 +27,7 @@ void BoidsScene::keyPress(int key) {
 		boidsRenderer->setRenderingMode(RenderingModes::Circle);
 	}
 	if(key == 'w') {
-		boidsRenderer->setRenderingMode(RenderingModes::Triangle);
+		boidsRenderer->setRenderingMode(RenderingModes::Glitchy);
 	}
 	if(key == 'e') {
 		boidsRenderer->setRenderingMode(RenderingModes::Closest);

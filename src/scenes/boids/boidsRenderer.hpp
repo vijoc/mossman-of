@@ -2,14 +2,18 @@
 #include "flock.hpp"
 #include "renderingModes.hpp"
 #include "neighbourRenderer.hpp"
+#include "circleRenderer.hpp"
+#include "glitchyRenderer.hpp"
 
 class BoidsRenderer {
 public:
-	BoidsRenderer(Flock& flock): flock(flock), nr(flock) {;}
+	BoidsRenderer(Flock& flock): flock(flock), nr(flock), cr(flock), gr(flock) {;}
 	void draw();
 	void setRenderingMode(RenderingModes rMode);
 private:
-	NeighbourRenderer nr;
 	Flock& flock;
+	NeighbourRenderer nr;
+	CircleRenderer cr;
+	GlitchyRenderer gr;
 	void renderTriangles();
 };

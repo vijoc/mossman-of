@@ -4,7 +4,7 @@
 class NeighbourRenderer {
 public:
 	NeighbourRenderer(Flock& flock): flock(flock) {;}
-	void renderClosestTriangles();
+	void draw();
 private:
 	Flock& flock;
 	std::vector<std::shared_ptr<Boid>> findClosestNeighbours(std::shared_ptr<Boid> b);
