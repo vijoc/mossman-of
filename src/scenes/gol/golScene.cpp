@@ -9,7 +9,7 @@ void GolScene::draw() {
 	ofDrawRectangle(10, 10, 50, 50);
 }
 
-void GolScene::update() {
+void GolScene::update(float dt) {
 
 }
 

@@ -2,13 +2,11 @@
 #include "scenes/boids/boidsScene.hpp"
 #include "scenes/gol/golScene.hpp"
 
-float t;
 Scene* s1;
 Scene* s2;
 Scene* activeScene;
 //--------------------------------------------------------------
 void ofApp::setup(){
-	t = 0.0f;
 	ofBackground(255, 255, 255);
 	s1 = new BoidsScene();
 	s2 = new GolScene();
@@ -17,8 +15,7 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-	t += 0.03f;
-	activeScene->update();
+	activeScene->update(.0f);
 }
 
 //--------------------------------------------------------------

@@ -8,7 +8,7 @@ class BoidsScene : public Scene
 public:
 	BoidsScene();
 	void draw();
-	void update();
+	void update(float dt);
 	void activate();
 	void deactivate();
 	void keyPress(int key);

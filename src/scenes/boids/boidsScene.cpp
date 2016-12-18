@@ -9,7 +9,7 @@ void BoidsScene::draw() {
 	boidsRenderer->draw();
 }
 
-void BoidsScene::update() {
+void BoidsScene::update(float dt) {
 	flock->update();
 	return;
 }
