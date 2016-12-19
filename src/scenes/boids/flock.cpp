@@ -13,3 +13,9 @@ void Flock::update() {
 		boids[i]->update(boids);
 	}
 }
+
+void Flock::setRadius(float r) {
+	for (int i = 0; i < numberOfBoids; i++) {
+		boids[i]->setRadius(r);
+	}
+}

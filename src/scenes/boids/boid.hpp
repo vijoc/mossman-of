@@ -10,6 +10,7 @@ public:
 	void update(std::vector<std::shared_ptr<Boid>> boids);
 	ofVec2f getLocation() { return body.getLocation(); }
 	ofVec2f getVelocity() { return body.getVelocity(); }
+	void setRadius(float f) { body.setRadius(f); }
 	float getRadius() { return body.getRadius(); }
 private:
 	BoidBody body;
