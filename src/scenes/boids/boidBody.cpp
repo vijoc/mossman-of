@@ -2,7 +2,7 @@
 
 void BoidBody::update() {
 	velocity += acceleration;
-	if(velocity.length() > Rules::maxSpeed) velocity.scale(Rules::maxSpeed);
+	if(velocity.length() > rules.maxSpeed) velocity.scale(rules.maxSpeed);
 	location += velocity;
 	acceleration *= deceleration;
 	checkBounds();

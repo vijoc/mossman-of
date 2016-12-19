@@ -7,13 +7,14 @@
 class BoidBody {
 public:
 	BoidBody():
-		radius(Rules::radius),
-		weight(Rules::weight),
+		rules(),
+		radius(rules.radius),
+		weight(rules.weight),
 		bounds(Rules::Boundaries::Wrap),
 		location(ofVec2f(ofRandom(radius, ofGetWidth()-radius), ofRandom(radius, ofGetHeight()-radius))),
 		velocity(ofVec2f(ofRandomf(), ofRandomf())),
 		acceleration(ofVec2f(0, 0)),
-		deceleration(Rules::deceleration)
+		deceleration(rules.deceleration)
 	{;}
 
 	void	update();
@@ -29,6 +30,7 @@ public:
 	void	setRadius(float r) { radius = r; }
 	void	applyForce(ofVec2f force);
 private:
+	Rules rules;
 	float radius;
 	float weight;
 	Rules::Boundaries bounds;

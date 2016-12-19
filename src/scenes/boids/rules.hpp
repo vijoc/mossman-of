@@ -5,14 +5,16 @@
 
 class Rules {
 public:
-	static float weight;
-	static float radius;
-	static float deceleration;
-	static float maxSpeed;
+	Rules(): weight(10.0f), radius(10.0f), deceleration(0.3f), maxSpeed(2.0f) {;}
 
 	static float separationWeight;
 	static float cohesionWeight;
 	static float alignmentWeight;
+
+	float weight;
+	float radius;
+	float deceleration;
+	float maxSpeed;
 
 	static float desiredSeparation;
 	static float cohesionDist;
