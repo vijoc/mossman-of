@@ -17,7 +17,7 @@ public:
 	static float desiredSeparation;
 	static float cohesionDist;
 	static float alignmentDist;
-	enum Boundaries { Wrap, Bounce };
+	enum class Boundaries { Wrap, Bounce };
 };
 
 #endif /* RULES_H */
