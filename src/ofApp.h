@@ -21,4 +21,13 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		
+		void audioIn(float* input, int bufferSize, int nChannels);
+		ofSoundStream soundStream;
+
+		std::vector<float> left;
+		std::vector<float> right;
+		std::vector<float> volHistory;
+
+		float smoothedVol;
+		float scaledVol;
 };
