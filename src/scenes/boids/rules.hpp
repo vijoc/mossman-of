@@ -1,3 +1,6 @@
+#ifndef RULES_H
+#define RULES_H
+
 #include "ofMain.h"
 
 class Rules {
@@ -16,3 +19,5 @@ public:
 	static float alignmentDist;
 	enum Boundaries { Wrap, Bounce };
 };
+
+#endif /* RULES_H */
