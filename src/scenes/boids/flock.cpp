@@ -1,6 +1,6 @@
 #include "flock.hpp"
 
-static int flockSize = 8;
+static int flockSize = 64;
 
 Flock::Flock() {
 	for (int i = 0; i < flockSize; i++) {
