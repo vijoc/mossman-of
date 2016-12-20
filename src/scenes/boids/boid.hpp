@@ -3,16 +3,18 @@
 
 #include "ofMain.h"
 #include "boidBody.hpp"
+#include "boidRules.hpp"
 
 class Boid {
 public:
-	Boid(): body() {;}
+	Boid(): body(), rules() {;}
 	void update(std::vector<std::shared_ptr<Boid>> boids);
 	ofVec2f getLocation() { return body.getLocation(); }
 	ofVec2f getVelocity() { return body.getVelocity(); }
 	void setRadius(float f) { body.setRadius(f); }
 	float getRadius() { return body.getRadius(); }
 private:
+	BoidRules rules;
 	BoidBody body;
 	void applyForce(ofVec2f force);
 	void flock(std::vector<std::shared_ptr<Boid>> boids);
