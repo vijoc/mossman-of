@@ -1,5 +1,5 @@
 #include "boid.hpp"
-#include "rules.hpp"
+#include "boidRules.hpp"
 
 void Boid::update(std::vector<std::shared_ptr<Boid>> boids) {
 	body.update();
@@ -7,9 +7,9 @@ void Boid::update(std::vector<std::shared_ptr<Boid>> boids) {
 }
 
 void Boid::flock(std::vector<std::shared_ptr<Boid>> boids) {
-	ofVec2f separation = separate(boids) * Rules::separationWeight;
-	ofVec2f cohesion   = cohere(boids)   * Rules::cohesionWeight;
-	ofVec2f alignment  = align(boids)    * Rules::alignmentWeight;
+	ofVec2f separation = separate(boids) * BoidRules::separationWeight;
+	ofVec2f cohesion   = cohere(boids)   * BoidRules::cohesionWeight;
+	ofVec2f alignment  = align(boids)    * BoidRules::alignmentWeight;
 
 	applyForce(separation);
 	applyForce(cohesion);
@@ -26,7 +26,7 @@ ofVec2f Boid::separate(std::vector<std::shared_ptr<Boid>> boids) {
 		std::shared_ptr<Boid> b = boids[i];
 		ofVec2f location = body.getLocation();
 		float distance = location.distance(b->getLocation());
-		if(distance < Rules::desiredSeparation && distance > 0) {
+		if(distance < BoidRules::desiredSeparation && distance > 0) {
 			ofVec2f d = b->getLocation() - location;
 			d.normalize();
 			d /= distance;
@@ -43,7 +43,7 @@ ofVec2f Boid::cohere(std::vector<std::shared_ptr<Boid>> boids) {
 		std::shared_ptr<Boid> b = boids[i];
 		ofVec2f location = body.getLocation();
 		float distance = location.distance(b->getLocation());
-		if(distance < Rules::cohesionDist && distance > 0) {
+		if(distance < BoidRules::cohesionDist && distance > 0) {
 			ofVec2f d = b->getLocation() - location;
 			d.normalize();
 			c += d;
@@ -58,7 +58,7 @@ ofVec2f Boid::align(std::vector<std::shared_ptr<Boid>> boids) {
 		std::shared_ptr<Boid> b = boids[i];
 		ofVec2f location = body.getLocation();
 		float distance = location.distance(b->getLocation());
-		if(distance < Rules::alignmentDist && distance > 0) {
+		if(distance < BoidRules::alignmentDist && distance > 0) {
 			ofVec2f d = b->getVelocity();
 			d.normalize();
 			c += d;
