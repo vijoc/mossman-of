@@ -10,7 +10,7 @@ public:
 	Flock();
 	void update();
 	int getSize() { return boids.size(); }
-	std::shared_ptr<Boid> getBoid(int i) { return boids[i]; }
+	std::shared_ptr<Boid> getBoid(int i) { return boids[i]; } // TODO should be unique_ptr
 	void setRadius(float r);
 	void addBoid();
 	void removeBoid();

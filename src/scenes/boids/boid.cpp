@@ -4,7 +4,6 @@
 void Boid::update(std::vector<std::shared_ptr<Boid>> boids) {
 	body.update();
 	flock(boids);
-	body.checkBounds();
 }
 
 void Boid::flock(std::vector<std::shared_ptr<Boid>> boids) {
