@@ -12,6 +12,8 @@ public:
 	int getSize() { return boids.size(); }
 	std::shared_ptr<Boid> getBoid(int i) { return boids[i]; }
 	void setRadius(float r);
+	void addBoid();
+	void removeBoid();
 private:
 	std::vector<std::shared_ptr<Boid>> boids;
 };

@@ -1,9 +1,9 @@
 #include "flock.hpp"
 
-static int numberOfBoids = 256;
+static int flockSize = 256;
 
 Flock::Flock() {
-	for (int i = 0; i < numberOfBoids; i++) {
+	for (int i = 0; i < flockSize; i++) {
 		boids.push_back(std::shared_ptr<Boid>(new Boid()));
 	}
 }
@@ -15,7 +15,15 @@ void Flock::update() {
 }
 
 void Flock::setRadius(float r) {
-	for (int i = 0; i < numberOfBoids; i++) {
+	for (int i = 0; i < boids.size(); i++) {
 		boids[i]->setRadius(r);
 	}
+}
+
+void Flock::addBoid() {
+	boids.push_back(std::shared_ptr<Boid>(new Boid()));
+}
+
+void Flock::removeBoid() {
+	boids.erase(boids.end() - 1);
 }

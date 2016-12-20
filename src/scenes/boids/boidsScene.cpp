@@ -38,5 +38,11 @@ void BoidsScene::keyPress(int key) {
 	if(key == 'x') {
 		flock->setRadius(10.0);
 	}
+	if(key == OF_KEY_UP) {
+		flock->addBoid();
+	}
+	if(key == OF_KEY_DOWN) {
+		flock->removeBoid();
+	}
 	return;
 }
