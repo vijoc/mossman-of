@@ -30,6 +30,8 @@ ofVec2f Boid::separate(std::vector<std::shared_ptr<Boid>> boids) {
 		if(distance < Rules::desiredSeparation && distance > 0) {
 			ofVec2f d = b->getLocation() - location;
 			d.normalize();
+			d /= distance;
+			d *= 100.0; // magic number to balance behavior for now -> TODO move to rules
 			c += d;
 		}
 	}
