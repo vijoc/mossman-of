@@ -11,10 +11,26 @@ public:
 		alignmentWeight(aw),
 		desiredSeparation(ds),
 		cohesionDist(cd),
-		alignmentDist(ad) {;} // TODO testing
+		alignmentDist(ad) {;}
 
-	friend std::ostream& operator << (std::ostream &strm, const BoidRules& br) { // TODO flesh out
-		return strm << "BoidRules: sw: " << br.separationWeight << ", ds: " << br.desiredSeparation << "\n";
+	friend std::ostream& operator << (std::ostream &strm, const BoidRules& br) {
+		return strm << "BoidRules: \n"
+			<< "separationWeight: " << br.separationWeight << "\n"
+			<< "cohesionWeight: " << br.cohesionWeight << "\n"
+			<< "alignmentWeight: " << br.alignmentWeight << "\n"
+			<< "desiredSeparation: " << br.desiredSeparation << "\n"
+			<< "cohesionDist: " << br.cohesionDist << "\n"
+			<< "alignmentDist: " << br.alignmentDist << "\n";
+	}
+
+	static BoidRules getRandomBoidRules() { // TODO needs sensible ranges
+		float sw = ofRandom(0, 4);
+		float cw = ofRandom(0, 4);
+		float aw = ofRandom(0, 4);
+		float ds = ofRandom(0, 400);
+		float cd = ofRandom(0, 400);
+		float ad = ofRandom(0, 400);
+		return BoidRules(sw, cw, aw, ds, cd, ad);
 	}
 
 	float separationWeight;
