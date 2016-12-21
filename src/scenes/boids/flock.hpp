@@ -14,6 +14,8 @@ public:
 	void setRadius(float r);
 	void addBoid();
 	void removeBoid();
+	void randomizeBoidRules();
+	void setBoidRules(BoidRules boidRules);
 private:
 	std::vector<std::shared_ptr<Boid>> boids;
 };

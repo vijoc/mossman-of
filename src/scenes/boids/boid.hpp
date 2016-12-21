@@ -13,9 +13,10 @@ public:
 	ofVec2f getVelocity() { return body.getVelocity(); }
 	void setRadius(float f) { body.setRadius(f); }
 	float getRadius() { return body.getRadius(); }
+	void setBoidRules(BoidRules boidRules) { rules = boidRules; }
 private:
-	BoidRules rules;
 	BoidBody body;
+	BoidRules rules;
 	void applyForce(ofVec2f force);
 	void flock(std::vector<std::shared_ptr<Boid>> boids);
 	ofVec2f separate(std::vector<std::shared_ptr<Boid>> boids);

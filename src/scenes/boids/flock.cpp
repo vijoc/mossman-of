@@ -1,6 +1,7 @@
 #include "flock.hpp"
 
 static int flockSize = 64;
+static int minimumFlockSize = 4; // some renderer segfaults if this is smaller, TODO fix
 
 Flock::Flock() {
 	for (int i = 0; i < flockSize; i++) {
@@ -25,5 +26,17 @@ void Flock::addBoid() {
 }
 
 void Flock::removeBoid() {
-	boids.erase(boids.end() - 1);
+	if (boids.size() > minimumFlockSize) boids.erase(boids.end() - 1);
+}
+
+void Flock::setBoidRules(BoidRules boidRules) {
+	for (int i = 0; i < boids.size(); i++) {
+		boids[i]->setBoidRules(boidRules);
+	}
+}
+
+void Flock::randomizeBoidRules() { // TODO continue from here
+	BoidRules r(500);
+	std::cout << r;
+	setBoidRules(r);
 }

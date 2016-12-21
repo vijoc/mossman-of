@@ -32,6 +32,9 @@ void BoidsScene::keyPress(int key) {
 	if(key == 'e') {
 		boidsRenderer->setRenderingMode(RenderingModes::Closest);
 	}
+	if(key == 'r') {
+		flock->randomizeBoidRules();
+	}
 	if(key == 'z') {
 		flock->setRadius(5.0);
 	}
