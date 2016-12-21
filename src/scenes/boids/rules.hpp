@@ -16,7 +16,7 @@ public:
 		float r = ofRandom(1, 20);
 		float d = ofRandom(0.1, 0.95);
 		float ms = ofRandom(0, 5);
-		Boundaries b = Boundaries::Wrap; // yes yes should be randomized as well
+		Boundaries b = static_cast<Boundaries>(rand() % 2);
 		return Rules(w, r, d, ms, b);
 	}
 
