@@ -15,7 +15,9 @@ public:
 	void addBoid();
 	void removeBoid();
 	void randomizeBoidRules();
+	void randomizeBoidBodyRules();
 	void setBoidRules(BoidRules boidRules);
+	void setBoidBodyRules(Rules rules);
 private:
 	std::vector<std::shared_ptr<Boid>> boids;
 };

@@ -8,13 +8,9 @@ class BoidBody {
 public:
 	BoidBody():
 		rules(),
-		radius(rules.radius),
-		weight(rules.weight),
-		bounds(Rules::Boundaries::Wrap),
-		location(ofVec2f(ofRandom(radius, ofGetWidth()-radius), ofRandom(radius, ofGetHeight()-radius))),
+		location(ofVec2f(ofRandom(rules.radius, ofGetWidth()-rules.radius), ofRandom(rules.radius, ofGetHeight()-rules.radius))),
 		velocity(ofVec2f(ofRandomf(), ofRandomf())),
-		acceleration(ofVec2f(0, 0)),
-		deceleration(rules.deceleration)
+		acceleration(ofVec2f(0, 0))
 	{;}
 
 	void	update();
@@ -26,18 +22,16 @@ public:
 	ofVec2f	getVelocity() { return velocity; }
 	void	setVelocity(ofVec2f vel) { velocity = vel; }
 
-	float	getRadius() { return radius; }
-	void	setRadius(float r) { radius = r; }
+	float	getRadius() { return rules.radius; }
+	void	setRadius(float r) { rules.radius = r; }
 	void	applyForce(ofVec2f force);
+
+	void	setRules(Rules bodyRules) { rules = bodyRules; }
 private:
 	Rules rules;
-	float radius;
-	float weight;
-	Rules::Boundaries bounds;
 	ofVec2f location;
 	ofVec2f velocity;
 	ofVec2f acceleration;
-	float deceleration;
 };
 
 #endif /* BOIDBODY_H */

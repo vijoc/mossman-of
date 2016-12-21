@@ -35,11 +35,8 @@ void BoidsScene::keyPress(int key) {
 	if(key == 'r') {
 		flock->randomizeBoidRules();
 	}
-	if(key == 'z') {
-		flock->setRadius(5.0);
-	}
-	if(key == 'x') {
-		flock->setRadius(10.0);
+	if(key == 't') {
+		flock->randomizeBoidBodyRules();
 	}
 	if(key == OF_KEY_UP) {
 		flock->addBoid();

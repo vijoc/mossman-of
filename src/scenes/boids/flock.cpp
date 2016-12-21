@@ -35,8 +35,20 @@ void Flock::setBoidRules(BoidRules boidRules) {
 	}
 }
 
+void Flock::setBoidBodyRules(Rules rules) {
+	for (int i = 0; i < boids.size(); i++) {
+		boids[i]->setBoidBodyRules(rules);
+	}
+}
+
 void Flock::randomizeBoidRules() {
 	BoidRules r = BoidRules::getRandomBoidRules();
 	std::cout << r;
 	setBoidRules(r);
+}
+
+void Flock::randomizeBoidBodyRules() {
+	Rules r = Rules::getRandomRules();
+	// std::cout << r;
+	setBoidBodyRules(r);
 }

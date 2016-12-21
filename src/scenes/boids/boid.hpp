@@ -14,6 +14,7 @@ public:
 	void setRadius(float f) { body.setRadius(f); }
 	float getRadius() { return body.getRadius(); }
 	void setBoidRules(BoidRules boidRules) { rules = boidRules; }
+	void setBoidBodyRules(Rules rules) { body.setRules(rules); }
 private:
 	BoidBody body;
 	BoidRules rules;
