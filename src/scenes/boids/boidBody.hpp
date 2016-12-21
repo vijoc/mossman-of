@@ -10,7 +10,7 @@ public:
 		rules(),
 		radius(rules.radius),
 		weight(rules.weight),
-		bounds(Rules::Boundaries::Bounce),
+		bounds(Rules::Boundaries::Wrap),
 		location(ofVec2f(ofRandom(radius, ofGetWidth()-radius), ofRandom(radius, ofGetHeight()-radius))),
 		velocity(ofVec2f(ofRandomf(), ofRandomf())),
 		acceleration(ofVec2f(0, 0)),

@@ -36,7 +36,7 @@ void ofApp::update(){
 		volHistory.erase(volHistory.begin(), volHistory.begin()+1);
 	}
 	if(scaledVol > 0.5) {
-		activeScene->keyPress('z');
+		activeScene->keyPress('r');
 	}
 }
 
