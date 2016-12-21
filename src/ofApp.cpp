@@ -73,10 +73,10 @@ void ofApp::audioIn(float* input, int bufferSize, int nChannels) {
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-	if (key == 's') {
+	if (key == '1') {
 		activeScene = s1;
 	}
-	if (key == 't') {
+	if (key == '2') {
 		activeScene = s2;
 	}
 	else {
