@@ -31,3 +31,6 @@
 # Object and binary folders
 /bin
 /obj
+
+# OS-generated files
+.DS_Store
