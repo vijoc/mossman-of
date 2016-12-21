@@ -36,7 +36,7 @@ void Flock::setBoidRules(BoidRules boidRules) {
 }
 
 void Flock::randomizeBoidRules() { // TODO continue from here
-	BoidRules r(500);
+	BoidRules r(4, 0.5, 0.25, 200, 300, 500);
 	std::cout << r;
 	setBoidRules(r);
 }
