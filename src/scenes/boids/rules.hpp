@@ -20,6 +20,15 @@ public:
 		return Rules(w, r, d, ms, b);
 	}
 
+	friend std::ostream& operator << (std::ostream& strm, const Rules& r) {
+		return strm << "Rules: \n"
+			<< "weight: " << r.weight << "\n"
+			<< "radius: " << r.radius << "\n"
+			<< "deceleration: " << r.deceleration << "\n"
+			<< "maxSpeed: " << r.maxSpeed << "\n";
+			//<< "bounds: " << r.bounds << "\n"; // TODO well of course this doesn't work
+	}
+
 	float weight;
 	float radius;
 	float deceleration;

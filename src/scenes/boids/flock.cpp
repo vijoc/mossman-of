@@ -49,6 +49,6 @@ void Flock::randomizeBoidRules() {
 
 void Flock::randomizeBoidBodyRules() {
 	Rules r = Rules::getRandomRules();
-	// std::cout << r;
+	std::cout << r;
 	setBoidBodyRules(r);
 }
