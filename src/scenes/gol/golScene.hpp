@@ -14,8 +14,7 @@ public:
 		}
 		for(int i = 0; i < 32; i++) {
 			for(int j = 0; j < 32; j++) {
-				if(i == j) gol[i][j] = true;
-				else if(i == 2*j) gol[i][j] = true;
+				if(rand() % 2 == 0) gol[i][j] = true;
 				else gol[i][j] = false;
 			}
 		}

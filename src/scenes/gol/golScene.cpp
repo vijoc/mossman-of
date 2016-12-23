@@ -21,7 +21,6 @@ void GolScene::deactivate() {
 }
 
 void GolScene::keyPress(int key) {
-	std::cout << "fdsfd\n";
 	gol = getNextStates();
 }
 
