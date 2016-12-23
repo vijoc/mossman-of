@@ -2,6 +2,7 @@
 
 void Boid::update(std::vector<std::shared_ptr<Boid>> boids) {
 	body.update();
+	// applyForce(ofVec2f(0, 10)); // TODO separate gravity to proper control
 	flock(boids);
 }
 

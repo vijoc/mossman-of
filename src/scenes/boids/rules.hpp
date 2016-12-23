@@ -26,13 +26,13 @@ public:
 			<< "radius: " << r.radius << "\n"
 			<< "deceleration: " << r.deceleration << "\n"
 			<< "maxSpeed: " << r.maxSpeed << "\n"
-			<< "bounds: " << static_cast<int>(r.bounds) << "\n"; // TODO well of course this doesn't work
+			<< "bounds: " << static_cast<int>(r.bounds) << "\n";
 	}
 
 	float weight;
 	float radius;
 	float deceleration;
-	float maxSpeed;
+	float maxSpeed; // TODO move this to Boid to control flocking, but still allow e.g. gravitational acceleration
 
 	Boundaries bounds;
 };
