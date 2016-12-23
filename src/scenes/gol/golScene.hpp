@@ -30,6 +30,7 @@ private:
 	std::vector<std::vector<bool>> gol;
 	std::vector<std::vector<bool>> getNextStates();
 	bool calculateNextState(int i, int j);
+	void randomizeState();
 	int countAliveNeighbours(int x, int y);
 	int wrapColumn(int x) { return wrapAround(x, 32); }
 	int wrapRow(int y) { return wrapAround(y, 32); }

@@ -21,6 +21,7 @@ void GolScene::deactivate() {
 }
 
 void GolScene::keyPress(int key) {
+	if(key == 'r') randomizeState();
 	gol = getNextStates();
 }
 
@@ -43,6 +44,15 @@ bool GolScene::calculateNextState(int i, int j) {
 	int neighbourCount = countAliveNeighbours(i, j);
 	if(gol[i][j])	return ruleSet.survivalRulesContain(neighbourCount);
 	else		return ruleSet.birthRulesContain(neighbourCount);
+}
+
+void GolScene::randomizeState() {
+	for(int i = 0; i < 32; i++) {
+		for(int j = 0; j < 32; j++) {
+			if(rand() % 2 == 0) gol[i][j] = true;
+			else gol[i][j] = false;
+		}
+	}
 }
 
 int GolScene::countAliveNeighbours(int x, int y) {
