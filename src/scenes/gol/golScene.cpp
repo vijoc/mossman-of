@@ -1,7 +1,7 @@
 #include "golScene.hpp"
 #include "goodRuleSets.hpp"
 
-void GolScene::draw() { // TODO something fishy here
+void GolScene::draw() {
 	float cellWidth = ofGetWidth() / colCount;
 	float cellHeight= ofGetHeight() / rowCount;
 	for(int i = 0; i < colCount; i++) {
