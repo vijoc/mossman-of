@@ -12,7 +12,7 @@ void GolScene::draw() {
 }
 
 void GolScene::update(float dt) {
-
+	gol = getNextStates();
 }
 
 void GolScene::activate() {
@@ -26,7 +26,7 @@ void GolScene::deactivate() {
 void GolScene::keyPress(int key) {
 	if(key == 'r') randomizeState();
 	if(key == 'n') randomizeRules();
-	else gol = getNextStates();
+	if(key == 'c') clearScreen();
 }
 
 std::vector<std::vector<bool>> GolScene::getNextStates() {
@@ -55,6 +55,14 @@ void GolScene::randomizeState() {
 		for(int j = 0; j < rowCount; j++) {
 			if(rand() % 2 == 0) gol[i][j] = true;
 			else gol[i][j] = false;
+		}
+	}
+}
+
+void GolScene::clearScreen() {
+	for(int i = 0; i < colCount; i++) {
+		for(int j = 0; j < rowCount; j++) {
+			gol[i][j] = false;
 		}
 	}
 }

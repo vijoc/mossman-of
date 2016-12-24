@@ -7,8 +7,8 @@
 
 class GolScene : public Scene {
 public:
-	int colCount = 320;
-	int rowCount = 320;
+	int colCount = 1024; // default size of ofApp window
+	int rowCount = 768;
 	GolScene(): ruleSet() {
 		gol.resize(colCount);
 		for(int i = 0; i < colCount; i++) {
@@ -34,6 +34,7 @@ private:
 	bool calculateNextState(int x, int y);
 	void randomizeState();
 	void randomizeRules();
+	void clearScreen();
 	int countAliveNeighbours(int x, int y);
 	int wrapColumn(int x) { return wrapAround(x, colCount); }
 	int wrapRow(int y) { return wrapAround(y, rowCount); }
