@@ -2,8 +2,8 @@
 #include "goodRuleSets.hpp"
 
 void GolScene::draw() {
-	for(int i = 0; i < 32; i++) {
-		for(int j = 0; j < 32; j++) {
+	for(int i = 0; i < rowCount; i++) {
+		for(int j = 0; j < colCount; j++) {
 			if(gol[i][j]) ofDrawRectangle(i*15, j*15, 10, 10);
 		}
 	}
@@ -29,12 +29,12 @@ void GolScene::keyPress(int key) {
 
 std::vector<std::vector<bool>> GolScene::getNextStates() {
 	std::vector<std::vector<bool>> buffer;
-	buffer.resize(32);
-	for(int i = 0; i < 32; i++) {
-		buffer[i].resize(32);
+	buffer.resize(rowCount);
+	for(int i = 0; i < rowCount; i++) {
+		buffer[i].resize(colCount);
 	}
-	for(int i = 0; i < 32; i++) {
-		for(int j = 0; j < 32; j++) {
+	for(int i = 0; i < rowCount; i++) {
+		for(int j = 0; j < colCount; j++) {
 			bool nextState = calculateNextState(i, j);
 			buffer[i][j] = nextState;
 		}
@@ -49,8 +49,8 @@ bool GolScene::calculateNextState(int x, int y) {
 }
 
 void GolScene::randomizeState() {
-	for(int i = 0; i < 32; i++) {
-		for(int j = 0; j < 32; j++) {
+	for(int i = 0; i < rowCount; i++) {
+		for(int j = 0; j < colCount; j++) {
 			if(rand() % 2 == 0) gol[i][j] = true;
 			else gol[i][j] = false;
 		}
