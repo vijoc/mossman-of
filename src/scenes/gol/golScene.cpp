@@ -2,8 +2,8 @@
 #include "goodRuleSets.hpp"
 
 void GolScene::draw() {
-	float cellWidth = ofGetWidth() / colCount;
-	float cellHeight= ofGetHeight() / rowCount;
+	float cellWidth = (float) ofGetWidth() / (float) colCount;
+	float cellHeight= (float) ofGetHeight() / (float) rowCount;
 	for(int i = 0; i < colCount; i++) {
 		for(int j = 0; j < rowCount; j++) {
 			if(gol[i][j]) ofDrawRectangle(i*cellWidth, j*cellHeight, cellWidth, cellHeight);
