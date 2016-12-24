@@ -1,10 +1,12 @@
 #include "golScene.hpp"
 #include "goodRuleSets.hpp"
 
-void GolScene::draw() {
+void GolScene::draw() { // TODO something fishy here
+	float cellWidth = ofGetWidth() / colCount;
+	float cellHeight= ofGetHeight() / rowCount;
 	for(int i = 0; i < rowCount; i++) {
 		for(int j = 0; j < colCount; j++) {
-			if(gol[i][j]) ofDrawRectangle(i*15, j*15, 10, 10);
+			if(gol[i][j]) ofDrawRectangle(i*cellWidth, j*cellHeight, cellWidth, cellHeight);
 		}
 	}
 }

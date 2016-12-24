@@ -7,8 +7,8 @@
 
 class GolScene : public Scene {
 public:
-	int rowCount = 64;
-	int colCount = 32;
+	int rowCount = 640;
+	int colCount = 640;
 	GolScene(): ruleSet() {
 		gol.resize(rowCount);
 		for(int i = 0; i < rowCount; i++) {
