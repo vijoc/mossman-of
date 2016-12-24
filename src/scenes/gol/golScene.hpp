@@ -7,15 +7,15 @@
 
 class GolScene : public Scene {
 public:
-	int rowCount = 640;
-	int colCount = 640;
+	int colCount = 320;
+	int rowCount = 320;
 	GolScene(): ruleSet() {
-		gol.resize(rowCount);
-		for(int i = 0; i < rowCount; i++) {
-			gol[i].resize(colCount);
+		gol.resize(colCount);
+		for(int i = 0; i < colCount; i++) {
+			gol[i].resize(rowCount);
 		}
-		for(int i = 0; i < rowCount; i++) {
-			for(int j = 0; j < colCount; j++) {
+		for(int i = 0; i < colCount; i++) {
+			for(int j = 0; j < rowCount; j++) {
 				if(rand() % 2 == 0) gol[i][j] = true;
 				else gol[i][j] = false;
 			}
@@ -35,8 +35,8 @@ private:
 	void randomizeState();
 	void randomizeRules();
 	int countAliveNeighbours(int x, int y);
-	int wrapColumn(int x) { return wrapAround(x, rowCount); }
-	int wrapRow(int y) { return wrapAround(y, colCount); }
+	int wrapColumn(int x) { return wrapAround(x, colCount); }
+	int wrapRow(int y) { return wrapAround(y, rowCount); }
 	int wrapAround(int i, int max) { if(i >= 0 && i < max) return i; else if(i < 0) return max + i; else return i - max; }
 };
 

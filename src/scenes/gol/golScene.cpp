@@ -4,8 +4,8 @@
 void GolScene::draw() { // TODO something fishy here
 	float cellWidth = ofGetWidth() / colCount;
 	float cellHeight= ofGetHeight() / rowCount;
-	for(int i = 0; i < rowCount; i++) {
-		for(int j = 0; j < colCount; j++) {
+	for(int i = 0; i < colCount; i++) {
+		for(int j = 0; j < rowCount; j++) {
 			if(gol[i][j]) ofDrawRectangle(i*cellWidth, j*cellHeight, cellWidth, cellHeight);
 		}
 	}
@@ -31,12 +31,12 @@ void GolScene::keyPress(int key) {
 
 std::vector<std::vector<bool>> GolScene::getNextStates() {
 	std::vector<std::vector<bool>> buffer;
-	buffer.resize(rowCount);
-	for(int i = 0; i < rowCount; i++) {
-		buffer[i].resize(colCount);
+	buffer.resize(colCount);
+	for(int i = 0; i < colCount; i++) {
+		buffer[i].resize(rowCount);
 	}
-	for(int i = 0; i < rowCount; i++) {
-		for(int j = 0; j < colCount; j++) {
+	for(int i = 0; i < colCount; i++) {
+		for(int j = 0; j < rowCount; j++) {
 			bool nextState = calculateNextState(i, j);
 			buffer[i][j] = nextState;
 		}
@@ -51,8 +51,8 @@ bool GolScene::calculateNextState(int x, int y) {
 }
 
 void GolScene::randomizeState() {
-	for(int i = 0; i < rowCount; i++) {
-		for(int j = 0; j < colCount; j++) {
+	for(int i = 0; i < colCount; i++) {
+		for(int j = 0; j < rowCount; j++) {
 			if(rand() % 2 == 0) gol[i][j] = true;
 			else gol[i][j] = false;
 		}
