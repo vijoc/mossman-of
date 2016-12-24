@@ -31,6 +31,7 @@ private:
 	std::vector<std::vector<bool>> getNextStates();
 	bool calculateNextState(int x, int y);
 	void randomizeState();
+	void randomizeRules();
 	int countAliveNeighbours(int x, int y);
 	int wrapColumn(int x) { return wrapAround(x, 32); }
 	int wrapRow(int y) { return wrapAround(y, 32); }

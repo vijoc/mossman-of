@@ -1,4 +1,5 @@
 #include "golScene.hpp"
+#include "goodRuleSets.hpp"
 
 void GolScene::draw() {
 	for(int i = 0; i < 32; i++) {
@@ -22,7 +23,8 @@ void GolScene::deactivate() {
 
 void GolScene::keyPress(int key) {
 	if(key == 'r') randomizeState();
-	gol = getNextStates();
+	if(key == 'n') randomizeRules();
+	else gol = getNextStates();
 }
 
 std::vector<std::vector<bool>> GolScene::getNextStates() {
@@ -53,6 +55,11 @@ void GolScene::randomizeState() {
 			else gol[i][j] = false;
 		}
 	}
+}
+
+void GolScene::randomizeRules() {
+	RuleSet newRules = GoodRuleSets::lifeWithoutDeath;
+	ruleSet = newRules;
 }
 
 int GolScene::countAliveNeighbours(int x, int y) {
