@@ -58,8 +58,7 @@ void GolScene::randomizeState() {
 }
 
 void GolScene::randomizeRules() {
-	RuleSet newRules = GoodRuleSets::lifeWithoutDeath;
-	ruleSet = newRules;
+	ruleSet = GoodRuleSets::getRandomRuleSet();
 }
 
 int GolScene::countAliveNeighbours(int x, int y) {

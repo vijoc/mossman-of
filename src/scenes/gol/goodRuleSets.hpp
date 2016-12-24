@@ -23,4 +23,10 @@ namespace GoodRuleSets {
 	RuleSet threeFourLife		({ 3, 4 },		{ 3, 4 });
 	RuleSet twoXTwo			({ 3, 6 },		{ 1, 2, 5 });
 	RuleSet walledCities		({ 4, 5, 6, 7, 8 },	{ 2, 3, 4, 5 });
+
+	std::vector<RuleSet> goodRuleSets({ amoeba, assimilation, coagulations, coral, dayAndNight, diamoeba, gnarl, gol, highLife, lifeWithoutDeath, longLife, maze, mazectric, move, pseudoLife, replicator, seedsTwo, serviettes, stains, threeFourLife, twoXTwo, walledCities });
+
+	RuleSet getRandomRuleSet() {
+		return goodRuleSets[rand() % goodRuleSets.size()]; // TODO skewed distribution
+	}
 }
