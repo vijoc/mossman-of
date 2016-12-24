@@ -1,6 +1,9 @@
 class RuleSet {
 public:
-	bool survivalRulesContain(int i) { if(i==2||i==3) return true; else return false; }	
-	bool birthRulesContain(int i) {if(i==3) return true; else return false; }
+	RuleSet() {;} // TODO currently default to default GOL rules
+	bool birthRulesContain(int i) { return std::find(birthCounts.begin(), birthCounts.end(), i) != birthCounts.end(); }
+	bool survivalRulesContain(int i) { return std::find(survivalCounts.begin(), survivalCounts.end(), i) != survivalCounts.end(); }
 private:
+	std::vector<int> birthCounts = { 3 };
+	std::vector<int> survivalCounts = { 2, 3 };
 };

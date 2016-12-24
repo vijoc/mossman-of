@@ -40,9 +40,9 @@ std::vector<std::vector<bool>> GolScene::getNextStates() {
 	return buffer;
 }
 
-bool GolScene::calculateNextState(int i, int j) {
-	int neighbourCount = countAliveNeighbours(i, j);
-	if(gol[i][j])	return ruleSet.survivalRulesContain(neighbourCount);
+bool GolScene::calculateNextState(int x, int y) {
+	int neighbourCount = countAliveNeighbours(x, y);
+	if(gol[x][y])	return ruleSet.survivalRulesContain(neighbourCount);
 	else		return ruleSet.birthRulesContain(neighbourCount);
 }
 
