@@ -12,7 +12,7 @@ void GolScene::draw() {
 }
 
 void GolScene::update(float dt) {
-	//gol = getNextStates(); // TODO testing
+	gol = getNextStates();
 }
 
 void GolScene::activate() {
@@ -103,7 +103,7 @@ int GolScene::countAliveNeighbours(int x, int y) {
 	for(int i = -1; i <= 1; i++) {
 		col = wrapColumn(x + i);
 		for(int j = -1; j <= 1; j++) {
-			if(col == 0 && row == 0) continue; // skip self
+			if(i == 0 && j == 0) continue; // skip self
 			row = wrapRow(y + j);
 			if(gol[col][row]) sum++;
 		}
