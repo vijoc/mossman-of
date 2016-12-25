@@ -27,6 +27,22 @@ void GolScene::keyPress(int key) {
 	if(key == 'r') randomizeState();
 	if(key == 'n') randomizeRules();
 	if(key == 'c') clearScreen();
+	if(key == OF_KEY_UP) {
+		colCount++;
+		rowCount++;
+		gol.resize(colCount);
+		for(int i = 0; i < colCount; i++) {
+			gol[i].resize(rowCount);
+		}
+	}
+	if(key == OF_KEY_DOWN) {
+		colCount--;
+		rowCount--;
+		gol.resize(colCount);
+		for(int i = 0; i < colCount; i++) {
+			gol[i].resize(rowCount);
+		}
+	}
 }
 
 std::vector<std::vector<bool>> GolScene::getNextStates() {
