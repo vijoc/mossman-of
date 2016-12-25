@@ -30,7 +30,7 @@ void GolScene::keyPress(int key) {
 	if(key == 'b') insertShape(bomb, rand() % rowCount, rand() % colCount);
 	if(key == 'a') gol = getNextStates();
 	if(key == OF_KEY_UP) {
-		colCount++;
+		colCount++; // TODO testing
 		rowCount++;
 		gol.resize(colCount);
 		for(int i = 0; i < colCount; i++) {

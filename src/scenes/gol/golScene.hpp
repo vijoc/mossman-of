@@ -7,8 +7,10 @@
 
 class GolScene : public Scene {
 public:
-	int colCount = 1024; // default size of ofApp window
-	int rowCount = 768;
+	//int colCount = 1024; // default size of ofApp window
+	//int rowCount = 768;
+	int colCount = 32;
+	int rowCount = 32;
 	GolScene(): ruleSet() {
 		gol.resize(colCount);
 		for(int i = 0; i < colCount; i++) {
