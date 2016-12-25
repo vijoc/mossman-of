@@ -8,7 +8,7 @@ namespace GoodRuleSets {
 	RuleSet dayAndNight		({ 3, 6, 7, 8 },	{ 3, 4, 6, 7, 8 });
 	RuleSet diamoeba		({ 3, 5, 6, 7, 8 },	{ 5, 6, 7, 8 });
 	RuleSet gnarl			({ 1 },			{ 1 });
-	RuleSet gol			({ 2, 3 },		{ 3 });
+	RuleSet gol			({ 3 },			{ 2, 3 });
 	RuleSet highLife		({ 3, 6 },		{ 2, 3 });
 	RuleSet lifeWithoutDeath	({ 2, 3 },		{ 0, 1, 2, 3, 4, 5, 6, 7, 8 });
 	RuleSet longLife		({ 3, 4, 5 },		{ 5 });
