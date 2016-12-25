@@ -12,7 +12,7 @@ void GolScene::draw() {
 }
 
 void GolScene::update(float dt) {
-	gol = getNextStates();
+	//gol = getNextStates(); // TODO testing
 }
 
 void GolScene::activate() {
@@ -27,6 +27,8 @@ void GolScene::keyPress(int key) {
 	if(key == 'r') randomizeState();
 	if(key == 'n') randomizeRules();
 	if(key == 'c') clearScreen();
+	if(key == 'b') insertShape(bomb, rand() % rowCount, rand() % colCount);
+	if(key == 'a') gol = getNextStates();
 	if(key == OF_KEY_UP) {
 		colCount++;
 		rowCount++;
@@ -79,6 +81,14 @@ void GolScene::clearScreen() {
 	for(int i = 0; i < colCount; i++) {
 		for(int j = 0; j < rowCount; j++) {
 			gol[i][j] = false;
+		}
+	}
+}
+
+void GolScene::insertShape(std::vector<std::vector<bool>> shape, int x, int y) {
+	for(int i = 0; i < shape.size(); i++) {
+		for(int j = 0; j < shape[0].size(); j++) {
+			gol[x+i][y+j] = shape[i][j];
 		}
 	}
 }

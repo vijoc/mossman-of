@@ -31,10 +31,12 @@ private:
 	RuleSet ruleSet;
 	std::vector<std::vector<bool>> gol;
 	std::vector<std::vector<bool>> getNextStates();
+	std::vector<std::vector<bool>> bomb = { { false, true, false }, { true, true, true }, { true, false, false }};
 	bool calculateNextState(int x, int y);
 	void randomizeState();
 	void randomizeRules();
 	void clearScreen();
+	void insertShape(std::vector<std::vector<bool>> shape, int x, int y);
 	int countAliveNeighbours(int x, int y);
 	int wrapColumn(int x) { return wrapAround(x, colCount); }
 	int wrapRow(int y) { return wrapAround(y, rowCount); }
