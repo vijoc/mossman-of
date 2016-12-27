@@ -12,7 +12,7 @@ void GolScene::draw() {
 }
 
 void GolScene::update(float dt) {
-	gol = getNextStates();
+	if(active) gol = getNextStates();
 }
 
 void GolScene::activate() {
@@ -29,6 +29,7 @@ void GolScene::keyPress(int key) {
 	if(key == 'c') clearScreen();
 	if(key == 'b') insertShape(bomb, rand() % rowCount, rand() % colCount);
 	if(key == 'a') gol = getNextStates();
+	if(key == 'p') active = !active;
 	if(key == OF_KEY_UP) {
 		colCount++; // TODO testing
 		rowCount++;

@@ -30,6 +30,7 @@ public:
 private:
 	RuleSet ruleSet;
 	std::vector<std::vector<bool>> gol;
+	bool active = true;
 	std::vector<std::vector<bool>> getNextStates();
 	std::vector<std::vector<bool>> bomb = { { false, true, false }, { true, true, true }, { true, false, false }};
 	bool calculateNextState(int x, int y);
