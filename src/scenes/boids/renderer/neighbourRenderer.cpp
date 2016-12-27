@@ -22,7 +22,7 @@ std::vector<std::shared_ptr<Boid>> NeighbourRenderer::findClosestNeighbours(std:
 		distances.emplace_back(d, c);
 	}
 	std::sort(distances.begin(), distances.end(), pairCompare);
-	for(int i = 0; i < 4; i++) {
+	for(int i = 0; i < numberOfNeighbours; i++) {
 		out.push_back(distances[i].second);
 	}
 	return out;

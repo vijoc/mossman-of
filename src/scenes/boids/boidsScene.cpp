@@ -44,5 +44,11 @@ void BoidsScene::keyPress(int key) {
 	if(key == OF_KEY_DOWN) {
 		flock->removeBoid();
 	}
+	if(key == OF_KEY_LEFT) {
+		boidsRenderer->decreaseNumberOfNeighbours();
+	}
+	if(key == OF_KEY_RIGHT) {
+		boidsRenderer->increaseNumberOfNeighbours();
+	}
 	return;
 }

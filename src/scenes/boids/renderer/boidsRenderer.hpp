@@ -10,6 +10,8 @@ public:
 	BoidsRenderer(Flock& flock): flock(flock), nr(flock), cr(flock), gr(flock) {;}
 	void draw();
 	void setRenderingMode(RenderingModes rMode);
+	void increaseNumberOfNeighbours() { nr.increaseNumberOfNeighbours(); }
+	void decreaseNumberOfNeighbours() { nr.decreaseNumberOfNeighbours(); }
 private:
 	Flock& flock;
 	NeighbourRenderer nr;
