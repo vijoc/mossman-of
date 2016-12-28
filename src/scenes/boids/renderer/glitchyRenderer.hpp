@@ -1,4 +1,4 @@
-#include "ofmain.h"
+#include "ofMain.h"
 #include "flock.hpp"
 
 class GlitchyRenderer {
