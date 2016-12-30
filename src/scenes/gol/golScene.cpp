@@ -1,4 +1,3 @@
-#include <iostream>
 #include "golScene.hpp"
 #include "goodRuleSets.hpp"
 

@@ -9,15 +9,23 @@
 // TODO move this somewhere else?
 namespace mossman {
 	int wrapAround(int i, int max) {
-		if( i >= 0 && i < max ) return i;
-		if( i < 0 ) return max + i;
-		return i - max;
+		auto mod = i % max;
+		return mod < 0 ? max + mod : mod;
 	}
 }
 
 GolWorld::GolWorld(int columns, int rows) 
 		: nCols(columns), nRows(rows) {
 	randomizeState();
+
+	// Build default neighbourhood
+	neighbourhood.reserve(8);
+	for(int i = -1; i <= 1; i++) {
+		for(int j = -1; j <= 1; j++) {
+			if(i == 0 && j == 0) continue;
+			neighbourhood.push_back(std::make_pair(i,j));
+		}
+	}
 }
 
 void GolWorld::step() {
@@ -26,8 +34,9 @@ void GolWorld::step() {
 		for(int y = 0; y < rowCount(); y++) {
 			if(x >= nCols || y >= nRows) continue;
 			int neighbourCount = countAliveNeighbours(x,y);
-			buffer[x][y] = (isAlive(x, y) ? ruleSet.survivalRulesContain(neighbourCount)
-						  : ruleSet.birthRulesContain(neighbourCount));
+			buffer[x][y] = (isAlive(x, y) 
+				? ruleSet.survivalRulesContain(neighbourCount)
+				: ruleSet.birthRulesContain(neighbourCount));
 		}
 	}
 	this->cells = buffer;
@@ -36,23 +45,16 @@ void GolWorld::step() {
 int GolWorld::countAliveNeighbours(int x, int y) const {
 	int sum = 0;
 	int col, row;
-	for(int i = -1; i <= 1; i++) {
-		for(int j = -1; j <= 1; j++) {
-			if(i == 0 && j == 0) continue; // skip self
-			col = wrapColumn(x + i);
-			row = wrapRow(y + j);
-			if(isAlive(col, row)) sum++;
-		}
+	for(auto neighbour : neighbourhood) {
+		col = wrapColumn(neighbour.first + x);
+		row = wrapColumn(neighbour.second + y);
+		if(isAlive(col, row)) sum++;
 	}
 	return sum;
 }
 
 CellContainer GolWorld::buildCellContainer() const {
-	auto container = std::vector<std::vector<bool>>(nCols);
-	for(int i = 0; i < nCols; i++) {
-		container[i].resize(nRows);
-	}
-	return container;
+	return gol::buildCellContainer(nCols, nRows);
 }
 
 void GolWorld::randomizeState() {

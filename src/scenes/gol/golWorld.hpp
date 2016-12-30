@@ -1,13 +1,12 @@
 #ifndef GOLWORLD_H
 #define GOLWORLD_H
 
-#include <cassert>
 #include <cstddef>
+#include <utility>
 #include <vector>
 
+#include "cellContainer.hpp"
 #include "ruleSet.hpp"
-
-using CellContainer = std::vector<std::vector<bool>>;
 
 // TODO place this somewhere else?
 namespace mossman {
@@ -15,6 +14,7 @@ namespace mossman {
 }
 
 using namespace mossman;
+using namespace gol;
 
 class GolWorld {
 public:
@@ -23,6 +23,7 @@ public:
 	void resize(size_t columns, size_t rows) {
 		nCols = columns; 
 		nRows = rows; 
+		gol::resizeCellContainer(cells, nCols, nRows);
 	}
 	void randomizeState();
 	void setRules(RuleSet ruleSet);
@@ -30,14 +31,11 @@ public:
 	void insertShape(const CellContainer& shape, int x, int y);
 
 	inline bool isAlive(int x, int y) const {
-		if( x >= 0 && x < colCount() && y >= 0 && y < rowCount())
-			return cells[x][y];
-		else
-			return false;
+		return cells[x][y];
 	}
 
-	int colCount() const { return cells.size(); }
-	int rowCount() const { return cells[0].size(); }
+	inline int colCount() const { return nCols; }
+	inline int rowCount() const { return nRows; }
 
 private:
 	int countAliveNeighbours(int x, int y) const;
@@ -57,6 +55,7 @@ private:
 
 	RuleSet ruleSet; 	// currently applied ruleset
 	CellContainer cells;	// current state
+	std::vector<std::pair<int, int>> neighbourhood;
 };
 
 #endif /* GOLWORLD_H */

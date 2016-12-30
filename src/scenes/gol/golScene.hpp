@@ -12,7 +12,6 @@ public:
 	int rowCount = 768;
 	GolScene(): world(colCount, rowCount) {
 	}
-	GolScene& operator=(const GolScene&) = default;
 	void draw();
 	void update(float dt);
 	void activate();
