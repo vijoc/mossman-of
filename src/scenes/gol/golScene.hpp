@@ -10,8 +10,9 @@ class GolScene : public Scene {
 public:
 	int colCount = 1024; // default size of ofApp window
 	int rowCount = 768;
-	GolScene(): world(1024, 768) {
+	GolScene(): world(colCount, rowCount) {
 	}
+	GolScene& operator=(const GolScene&) = default;
 	void draw();
 	void update(float dt);
 	void activate();

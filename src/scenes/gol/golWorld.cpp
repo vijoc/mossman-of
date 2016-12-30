@@ -1,5 +1,6 @@
 #include "golWorld.hpp"
 
+#include <algorithm>
 #include <cassert>
 #include <iostream>
 
@@ -21,8 +22,9 @@ GolWorld::GolWorld(int columns, int rows)
 
 void GolWorld::step() {
 	auto buffer = buildCellContainer();
-	for(int x = 0; x < nCols; x++) {
-		for(int y = 0; y < nRows; y++) {
+	for(int x = 0; x < colCount(); x++) {
+		for(int y = 0; y < rowCount(); y++) {
+			if(x >= nCols || y >= nRows) continue;
 			int neighbourCount = countAliveNeighbours(x,y);
 			buffer[x][y] = (isAlive(x, y) ? ruleSet.survivalRulesContain(neighbourCount)
 						  : ruleSet.birthRulesContain(neighbourCount));
@@ -39,8 +41,6 @@ int GolWorld::countAliveNeighbours(int x, int y) const {
 			if(i == 0 && j == 0) continue; // skip self
 			col = wrapColumn(x + i);
 			row = wrapRow(y + j);
-			assert(col >= 0 && col < nCols);
-			assert(row >= 0 && row < nRows);
 			if(isAlive(col, row)) sum++;
 		}
 	}
@@ -75,4 +75,12 @@ void GolWorld::setRules(RuleSet rules) {
 
 void GolWorld::clear() {
 	this->cells = buildCellContainer();
+}
+
+void GolWorld::insertShape(const CellContainer& shape, int x, int y) {
+	for(size_t i = 0; i < shape.size(); i++) {
+		for(size_t j = 0; j < shape[0].size(); j++) {
+			cells[x+i][y+j] = shape[i][j];
+		}
+	}
 }
